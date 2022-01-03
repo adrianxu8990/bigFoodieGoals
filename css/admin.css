@@ -1,0 +1,137 @@
+/*
+    Author: Adrian Xu;
+    Theme: Restaurant Food Order - Admin Page;
+    Version: 1.0;
+*/
+
+/*CSS for all*/
+*{
+    margin: 0 0;
+    padding: 0 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.wrapper {
+    padding: 1%;
+    width: 80%;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+
+.img-responsive {
+    width: 100%;
+}
+
+.text-right {
+    text-align: right;
+}
+.text-center {
+    text-align: center;
+}
+
+.all-center {
+    display:flex;
+}
+
+.clearfix {
+    clear: both;
+    float: none;
+}
+
+a {
+    color: rgb(109, 129, 245);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    color: rgb(133, 103, 161);
+}
+
+.tbl-full{
+    width: 100%;
+}
+
+.tbl-30 {
+    width: 30%;
+}
+
+table tr th {
+    border-bottom: 1px solid black;
+    padding: 1%;
+    text-align: left;
+}
+
+table tr td {
+    padding: 1%;
+}
+
+.btn-primary {
+    background-color: #406882;
+    color: white;
+    text-decoration: none;
+    padding: 1%;
+    font-weight: bold;
+}
+.btn-primary:hover {
+    background-color: #6998AB;
+    color: white;
+}
+
+
+.btn-gapfix {
+    margin-right: 20%;
+}
+
+
+.success {
+    color: #2ed573;
+}
+.error {
+    color: #ff4757;
+}
+/* Css for menu*/
+.menu {
+    border-bottom: 1px solid black;
+}
+.menu ul {
+    list-style-type: none;
+
+}
+.menu ul li {
+    display: inline;
+    padding: 1%;
+}
+
+/* Css for main*/
+.main-content {
+    margin: 1% 0;
+    padding: 0 0;
+}
+
+.col-4 {
+    width: 18%;
+    background-color: lightgray;
+    margin: 1%;
+    padding: 2%;
+    float: left;
+    margin-top: 2%;
+}
+
+/*CSS for Footer*/
+.footer {
+    color: white;
+    background-color: lightblue;
+}
+
+
+
+/* CSS for Login */
+.login {
+    border: 1px solid black;
+    width: 30%;
+    margin: 5% auto;
+    padding: 2%;
+}
