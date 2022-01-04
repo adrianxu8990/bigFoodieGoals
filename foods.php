@@ -15,82 +15,56 @@
 
 
 
-    <!-- fOOD MEnu Section Starts Here -->
+    <!--FoodMenu starts Here-->
     <section class="food-menu">
         <div class="container">
-            <h2 class="text-center">Food Menu</h2>
-
-            <div class="food-menu-box">
-                <div class='food-menu-img'>
-                    <img src="images/exploreMenu/shumai.jpg" alt="shumai" class="img-responsive img-curve">
-                </div>
-                <div class='food-menu-desc'>
-                    <h4>Shrimp Shumai</h4>
-                    <p class="food-price">$4.99</p>
-                    <p class="food-desc">Shrimp, corn</p>
-
-                    <br>
-                    <a href="#" class="btn btn-primary">Add to cart</a>
-                    <div class = "clearfix"></div>
-                </div>
-            </div>
-
-
-            <div class="food-menu-box">
-                <div class='food-menu-img'>
-                    <img src="images/exploreMenu/ramen.jpg" alt="reman" class="img-responsive img-curve">
-                </div>
-                <div class='food-menu-desc'>
-                    <h4>Ramen</h4>
-                    <p class="food-price">$15.99</p>
-                    <p class="food-desc">noodles, pork, egg, nori, corn</p>
-
-                    <br>
-                    <a href="#" class="btn btn-primary">Add to cart</a>
-                    <div class = "clearfix"></div>
-                </div>
-            </div>
-
-
-            <div class="food-menu-box">
-                <div class='food-menu-img'>
-                    <img src="images/exploreMenu/beijingDuck.jpg" alt="beijing duck" class="img-responsive img-curve">
-                </div>
-                <div class='food-menu-desc'>
-                    <h4>Beijing Duck</h4>
-                    <p class="food-price">$39.99</p>
-                    <p class="food-desc">duck, bun, green onion, carrot</p>
-
-                    <br>
-                    <a href="#" class="btn btn-primary">Add to cart</a>
-                    <div class = "clearfix"></div>
-                </div>
-            </div>
-
-
-            <div class="food-menu-box">
-                <div class='food-menu-img'>
-                    <img src="images/exploreMenu/burger.jpg" alt="burger" class="img-responsive img-curve">
-                </div>
-                <div class='food-menu-desc'>
-                    <h4>Bacon Burger</h4>
-                    <p class="food-price">$5.99</p>
-                    <p class="food-desc">beef, bacon, lettuce, tomato</p>
-
-                    <br>
-                    <a href="#" class="btn btn-primary">Add to cart</a>
-                    <div class = "clearfix"></div>
-                </div>
-            </div>
-
-
-            <div class="clearfix"></div>
-
+            <h2 class="text-center">Explore Foods</h2>
             
+            <?php 
+                $sql2 = "SELECT * FROM tbl_food WHERE active = 'Yes'";
+                $res2 = mysqli_query($conn, $sql2);
+                $count2 = mysqli_num_rows($res2);
+                if ($count2 > 0) {
+                    while($rows2 = mysqli_fetch_assoc($res2)) {
+                        $id2=$rows2['id'];
+                        $title2=$rows2['title'];
+                        $image_name2=$rows2['image_name'];
+                        $descriptions2 = $rows2['descriptions'];
+                        $price2 = $rows2['price'];
 
+                        ?>
+                        <div class="food-menu-box">
+                            <div class='food-menu-img'>
+                            <?php
+                                if ($image_name2 == "") {
+                                    echo "<div class='error'>Food image not available!<div>";
+                                } else {
+                                    ?>
+                                    <img src="<?php echo SITEURL; ?>images/foods/<?php echo $image_name2; ?>" alt="<?php echo $title2; ?>" class="img-responsive img-curve">
+                                <?php
+                                }
+                                ?>
+                                </div>
+                            <div class='food-menu-desc'>
+                                <h4><?php echo $title2; ?></h4>
+                                <p class="food-price"><?php echo $price2; ?></p>
+                                <p class="food-desc"><?php echo $descriptions2; ?></p>
+
+                                <br>
+                                <a href="#" class="btn btn-primary">Add to cart</a>
+                                <div class = "clearfix"></div>
+                            </div>
+                        </div>
+                        <?php
+                    }
+                } else {
+                    echo "<div class='error'>No foods in the DB!<div>";
+                }
+            ?>
+
+            <div class = "clearfix"></div>
         </div>
-
     </section>
-    <!-- fOOD Menu Section Ends Here -->
+    <!--FoodMenu ends Here-->
 
     <?php include('partials-front/footer.php')?>

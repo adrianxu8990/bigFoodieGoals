@@ -4,32 +4,39 @@
     <section class="categories">
         <div class="container">
             <h2 class="text-center">Categories</h2>
-            <a href="#">
-            <div class="box-3 float-container">
-                <img src="images/categories_pizza.jpeg" alt="pizza photo" class = "img-responsive img-curve">
 
-                <h3 class="float-text text-white">Pizza</h3>
-            </div>
-            </a>
+            <?php 
+                $sql = "SELECT * FROM tbl_categories WHERE active = 'Yes' AND featured = 'Yes' LIMIT 3";
+                $res = mysqli_query($conn, $sql);
+                $count = mysqli_num_rows($res);
 
-            <a href="#">
-            <div class="box-3 float-container">
-                <img src="images/categories_chinese.jpg" alt="chinese food photo" class = "img-responsive img-curve">
-
-                <h3 class="float-text text-white">Chinese</h3>
-            </div>
-            </a>
-
-            <a href="#">
-            <div class="box-3 float-container">
-                <img src="images/categories_mexican.jpeg" alt="mexican food photo" class = "img-responsive img-curve">
-                
-                <h3 class="float-text text-white">Mexican</h3>
-            </div>
-            </a>
-
+                if ($count > 0) {
+                    while($rows = mysqli_fetch_assoc($res)) {
+                        $id=$rows['id'];
+                        $title=$rows['title'];
+                        $image_name=$rows['image_name'];
+                        ?>
+                        <a href="#">
+                            <div class="box-3 float-container">
+                                <?php
+                                if ($image_name == "") {
+                                    echo "<div class='error'>Category image not available!<div>";
+                                } else {
+                                    ?>
+                                    <img src="<?php echo SITEURL; ?>images/categories/<?php echo $image_name; ?>" alt="<?php echo $title; ?>" class = "img-responsive img-curve">
+                                    <?php
+                                }
+                                ?>
+                                <h3 class="float-text text-white"><?php echo $title; ?></h3>
+                            </div>
+                        </a>
+                        <?php
+                    }
+                } else {
+                    echo "<div class='error'>No category in the DB!<div>";
+                }
+            ?>
             <div class="clearfix"></div>
-
         </div>
     </section>
     <!--Categories ends Here-->
@@ -38,68 +45,48 @@
     <section class="food-menu">
         <div class="container">
             <h2 class="text-center">Explore Foods</h2>
-            <div class="food-menu-box">
-                <div class='food-menu-img'>
-                    <img src="images/exploreMenu/shumai.jpg" alt="shumai" class="img-responsive img-curve">
-                </div>
-                <div class='food-menu-desc'>
-                    <h4>Shrimp Shumai</h4>
-                    <p class="food-price">$4.99</p>
-                    <p class="food-desc">Shrimp, corn</p>
+            
+            <?php 
+                $sql2 = "SELECT * FROM tbl_food WHERE active = 'Yes' AND featured = 'Yes' LIMIT 6";
+                $res2 = mysqli_query($conn, $sql2);
+                $count2 = mysqli_num_rows($res2);
+                if ($count2 > 0) {
+                    while($rows2 = mysqli_fetch_assoc($res2)) {
+                        $id2=$rows2['id'];
+                        $title2=$rows2['title'];
+                        $image_name2=$rows2['image_name'];
+                        $descriptions2 = $rows2['descriptions'];
+                        $price2 = $rows2['price'];
 
-                    <br>
-                    <a href="#" class="btn btn-primary">Add to cart</a>
-                    <div class = "clearfix"></div>
-                </div>
-            </div>
+                        ?>
+                        <div class="food-menu-box">
+                            <div class='food-menu-img'>
+                            <?php
+                                if ($image_name2 == "") {
+                                    echo "<div class='error'>Food image not available!<div>";
+                                } else {
+                                    ?>
+                                    <img src="<?php echo SITEURL; ?>images/foods/<?php echo $image_name2; ?>" alt="<?php echo $title2; ?>" class="img-responsive img-curve">
+                                <?php
+                                }
+                                ?>
+                                </div>
+                            <div class='food-menu-desc'>
+                                <h4><?php echo $title2; ?></h4>
+                                <p class="food-price"><?php echo $price2; ?></p>
+                                <p class="food-desc"><?php echo $descriptions2; ?></p>
 
-
-            <div class="food-menu-box">
-                <div class='food-menu-img'>
-                    <img src="images/exploreMenu/ramen.jpg" alt="reman" class="img-responsive img-curve">
-                </div>
-                <div class='food-menu-desc'>
-                    <h4>Ramen</h4>
-                    <p class="food-price">$15.99</p>
-                    <p class="food-desc">noodles, pork, egg, nori, corn</p>
-
-                    <br>
-                    <a href="#" class="btn btn-primary">Add to cart</a>
-                    <div class = "clearfix"></div>
-                </div>
-            </div>
-
-
-            <div class="food-menu-box">
-                <div class='food-menu-img'>
-                    <img src="images/exploreMenu/beijingDuck.jpg" alt="beijing duck" class="img-responsive img-curve">
-                </div>
-                <div class='food-menu-desc'>
-                    <h4>Beijing Duck</h4>
-                    <p class="food-price">$39.99</p>
-                    <p class="food-desc">duck, bun, green onion, carrot</p>
-
-                    <br>
-                    <a href="#" class="btn btn-primary">Add to cart</a>
-                    <div class = "clearfix"></div>
-                </div>
-            </div>
-
-
-            <div class="food-menu-box">
-                <div class='food-menu-img'>
-                    <img src="images/exploreMenu/burger.jpg" alt="burger" class="img-responsive img-curve">
-                </div>
-                <div class='food-menu-desc'>
-                    <h4>Bacon Burger</h4>
-                    <p class="food-price">$5.99</p>
-                    <p class="food-desc">beef, bacon, lettuce, tomato</p>
-
-                    <br>
-                    <a href="#" class="btn btn-primary">Add to cart</a>
-                    <div class = "clearfix"></div>
-                </div>
-            </div>
+                                <br>
+                                <a href="#" class="btn btn-primary">Add to cart</a>
+                                <div class = "clearfix"></div>
+                            </div>
+                        </div>
+                        <?php
+                    }
+                } else {
+                    echo "<div class='error'>No foods in the DB!<div>";
+                }
+            ?>
 
             <div class = "clearfix"></div>
         </div>
