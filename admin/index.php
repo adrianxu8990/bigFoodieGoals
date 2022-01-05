@@ -20,19 +20,19 @@
                 <div class="col-4 text-center">
                     <h1>5</h1>
                     <br>
-                    Categories
+                    Foods
 
                 </div>
                 <div class="col-4 text-center">
                     <h1>5</h1>
                     <br>
-                    Categories
+                    Orders
 
                 </div>
                 <div class="col-4 text-center">
                     <h1>5</h1>
                     <br>
-                    Categories
+                    Total Revenue
 
                 </div>
                 <div class="clearfix"></div>
