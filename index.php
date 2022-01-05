@@ -16,7 +16,7 @@
                         $title=$rows['title'];
                         $image_name=$rows['image_name'];
                         ?>
-                        <a href="#">
+                        <a href="<?php echo SITEURL; ?>category-foods.php?category_id=<?php echo $id; ?>">
                             <div class="box-3 float-container">
                                 <?php
                                 if ($image_name == "") {
@@ -96,8 +96,8 @@
     <!--Search starts Here-->
     <section class="food-search text-center">
         <div class="container">
-            <form action="">
-                <input type="search" name="search" placeholder="Try search Xiao long bao">
+            <form action="<?php echo SITEURL; ?>food-search.php" method="POST">
+                <input type="search" name="search" placeholder="Try search Xiao long bao" required>
                 <input type="submit" name="submit" value="search" class="btn btn-primary">
             </form>
         </div>
