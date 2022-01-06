@@ -5,6 +5,14 @@
 */
 
 /*CSS for all*/
+fieldset{
+    border: 1px solid gray;
+    margin: 5%;
+    padding: 3%;
+    border-radius: 5px;
+}
+
+
 *{
     margin: 0 0;
     padding: 0 0;
@@ -119,6 +127,14 @@ h3 {
     background-position: center;
     padding: 25%;
 }
+.food-search-2 {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 5%;
+    margin-top: -5%;
+}
+
 
 .food-search input[type = "search"] {
     width: 50%;
@@ -197,6 +213,24 @@ h3 {
 }
 
 
+/* for Order Section */
+.order{
+    width: 50%;
+    margin: 0 auto;
+}
+.input-responsive{
+    width: 96%;
+    padding: 1%;
+    margin-bottom: 3%;
+    border: 1px solid gray;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+.order-label{
+    margin-bottom: 1%; 
+    font-weight: bold;
+}
+
 /*Css for mobile size*/
 
 @media only screen and (max-width: 768px) {
@@ -243,4 +277,14 @@ h3 {
         padding: 5%;
         margin-bottom: 5%;
     }
+}
+
+
+
+
+.success {
+    color: #2ed573;
+}
+.error {
+    color: #ff4757;
 }

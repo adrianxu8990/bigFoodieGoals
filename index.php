@@ -1,4 +1,10 @@
 <?php include('partials-front/menu.php')?>
+<?php
+    if(isset($_SESSION['ordered'])) {
+        echo $_SESSION['ordered'];
+        unset($_SESSION['ordered']);
+    }
+?>
 
     <!--Categories starts Here-->
     <section class="categories">
@@ -77,7 +83,7 @@
                                 <p class="food-desc"><?php echo $descriptions2; ?></p>
 
                                 <br>
-                                <a href="#" class="btn btn-primary">Add to cart</a>
+                                <a href="<?php echo SITEURL; ?>order.php?food_id=<?php echo $id2; ?>" class="btn btn-primary">Order</a>
                                 <div class = "clearfix"></div>
                             </div>
                         </div>
